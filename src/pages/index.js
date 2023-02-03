@@ -53,7 +53,7 @@ export default function Home() {
                             Code review <span>-&gt;</span>
                         </h2>
                         <p className={inter.className}>
-                            Find in-depth information about Next.js features and&nbsp;API.
+                            Get insight for your code
                         </p>
                     </a>
 
@@ -65,7 +65,7 @@ export default function Home() {
                             SQL review <span>-&gt;</span>
                         </h2>
                         <p className={inter.className}>
-                            Learn about Next.js in an interactive course with&nbsp;quizzes!
+                            Review your SQL here
                         </p>
                     </a>
 
@@ -77,7 +77,7 @@ export default function Home() {
                             Unit test <span>-&gt;</span>
                         </h2>
                         <p className={inter.className}>
-                            Discover and deploy boilerplate example Next.js&nbsp;projects.
+                            Initiate unit test for use case
                         </p>
                     </a>
 
@@ -89,8 +89,7 @@ export default function Home() {
                             Automation test <span>-&gt;</span>
                         </h2>
                         <p className={inter.className}>
-                            Instantly deploy your Next.js site to a shareable URL
-                            with&nbsp;Vercel.
+                            Instantly generate API automation test
                         </p>
                     </a>
                 </div>

@@ -87,7 +87,7 @@ export default function AutomationTest() {
                         ? (
                             <>
                                 <div className="col-12 mb-3">
-                                    <label htmlFor="txtCode" className="form-label">Endpoint</label>
+                                    <label htmlFor="txtEndpoint" className="form-label">Endpoint</label>
                                     <div className="input-group mb-3">
                                         <span className="input-group-text" id="basic-addon1">
                                             <select className="form-control" id="cmbHttpMethod" onChange={e => setCmbHttpMethod(e.target.value)}>
@@ -98,7 +98,7 @@ export default function AutomationTest() {
                                                 <option value="DELETE">DELETE</option>
                                             </select>
                                         </span>
-                                        <input type="text" className="form-control" placeholder="https://example.com"
+                                        <input id="txtEndpoint" type="text" className="form-control" placeholder="https://example.com"
                                                aria-label="URL" aria-describedby="basic-addon1" onChange={e => setTxtEndpoint(e.target.value)} />
                                     </div>
                                 </div>
@@ -129,7 +129,13 @@ export default function AutomationTest() {
                                   onChange={e => setTxtAssertion(e.target.value)} ></textarea>
                     </div>
                     <div className="col-12 mb-3">
-                        <button type="button" className="btn btn-primary" disabled={!!loading} onClick={doGenerateApiAutomationTest}>{!loading ? 'Generate' : 'Loading'}</button>
+                        <button type="button" className="btn btn-primary" disabled={!!loading} onClick={doGenerateApiAutomationTest}>
+                            {
+                                !loading
+                                    ? (!data ? 'Generate' : 'Regenerate')
+                                    : 'Loading'
+                            }
+                        </button>
                     </div>
                 </div>
                 { !loading && !!error && (

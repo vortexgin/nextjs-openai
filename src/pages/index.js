@@ -58,6 +58,18 @@ export default function Home() {
                     </a>
 
                     <a
+                        href="/bitbucket-pr-review"
+                        className={styles.card}
+                    >
+                        <h2 className={inter.className}>
+                            Bitbucket review <span>-&gt;</span>
+                        </h2>
+                        <p className={inter.className}>
+                            Review pull request is easier
+                        </p>
+                    </a>
+
+                    <a
                         href="/sql-review"
                         className={styles.card}
                     >

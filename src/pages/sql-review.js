@@ -54,7 +54,13 @@ export default function SqlReview() {
                         />
                     </div>
                     <div className="col-12 mb-3">
-                        <button type="button" className="btn btn-primary" disabled={!!loading} onClick={doSqlReview}>{!loading ? 'Review' : 'Loading'}</button>
+                        <button type="button" className="btn btn-primary" disabled={!!loading} onClick={doSqlReview}>
+                            {
+                                !loading
+                                    ? (!data ? 'Review' : 'Get another insight')
+                                    : 'Loading'
+                            }
+                        </button>
                     </div>
                 </div>
                 { !loading && !!error && (

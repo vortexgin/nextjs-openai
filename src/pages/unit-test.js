@@ -62,7 +62,13 @@ export default function UnitTest() {
                         />
                     </div>
                     <div className="col-12 mb-3">
-                        <button type="button" className="btn btn-primary" disabled={!!loading} onClick={doGenerateUnitTest}>{!loading ? 'Generate' : 'Loading'}</button>
+                        <button type="button" className="btn btn-primary" disabled={!!loading} onClick={doGenerateUnitTest}>
+                            {
+                                !loading
+                                ? (!data ? 'Generate' : 'Regenerate')
+                                : 'Loading'
+                            }
+                        </button>
                     </div>
                 </div>
                 { !loading && !!error && (

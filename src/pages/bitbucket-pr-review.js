@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import Head from 'next/head'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-export default function CodeReview() {
+export default function BitbucketPrReview() {
 
     const [txtCode, setTxtCode] = useState('');
+    const [txtToken, setTxtToken] = useState('');
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -19,7 +20,7 @@ export default function CodeReview() {
             const response = await fetch(
                 '/api/openai',
                 {
-                    body: JSON.stringify({ action: 'code-review', code: txtCode }),
+                    body: JSON.stringify({ action: 'bitbucket-pr-review', code: txtCode, token: txtToken }),
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' }
                 }
@@ -39,19 +40,23 @@ export default function CodeReview() {
     return (
         <>
             <Head>
-                <title>Code Review</title>
-                <meta name="description" content="Ask OpenAI to perform code review" />
+                <title>Bitbucket PR Review</title>
+                <meta name="description" content="Ask OpenAI to perform code review for bitbucket PR" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <div className="container pt-5">
                 <div className="row">
                     <div className="col-12 mb-3">
-                        <label htmlFor="txtCode" className="form-label">Code</label>
-                        <textarea className="form-control" id="txtCode" rows={20}
-                                  placeholder="Put your updated code here"
-                                  onChange={e => setTxtCode(e.target.value)}
-                        />
+                        <label htmlFor="txtCode" className="form-label">PR link</label>
+                        <input type="text" id="txtCode" className="form-control"
+                               placeholder="https://bitbucket.org/<project>/<repository>/pull-requests/<PR ID>"
+                               onChange={e => setTxtCode(e.target.value)} />
+                    </div>
+                    <div className="col-12 mb-3">
+                        <label htmlFor="txtToken" className="form-label">App password</label>
+                        <input type="text" id="txtToken" className="form-control"
+                               onChange={e => setTxtToken(e.target.value)} />
                     </div>
                     <div className="col-12 mb-3">
                         <button type="button" className="btn btn-primary" disabled={!!loading} onClick={doCodeReview}>
@@ -80,7 +85,7 @@ export default function CodeReview() {
                     <div className="row mt-5">
                         <div className="col-12 mb-3 bg-white">
                             <h3>Result</h3>
-                            <pre>{data.review}</pre>
+                            <pre>{JSON.stringify(data.review)}</pre>
                         </div>
                     </div>
                 )}
